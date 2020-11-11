@@ -1,0 +1,4 @@
+review_page_url:
+    css: a.a-link-emphasis
+    xpath: null
+    type: Link

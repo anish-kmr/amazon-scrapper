@@ -1,0 +1,37 @@
+#Search Rsults Selectors
+products:
+    css: div.s-result-item.s-asin
+    multiple: true
+    type: Text
+    children:
+        title:
+            css: span.a-size-medium.a-color-base.a-text-normal
+            xpath: null
+            type: Text
+        reviewCount:  
+            css: 'div.a-section.a-spacing-none.a-spacing-top-micro span.a-size-base'
+            xpath: null
+            type: Text
+        avgStars: 
+            css: 'i.a-icon-star-small.a-star-small-4 span.a-icon-alt'
+            xpath: null
+            type: Text
+        price: 
+            css: span.a-price-whole
+            xpath: null
+            type: Text
+        image: 
+            css: img.s-image
+            xpath: null
+            type: Image
+        amazonLink: 
+            css: a.a-link-normal.a-text-normal
+            xpath: null
+            type: Attribute
+            attribute: href
+            
+next_page:
+    css: 'li.a-last a'
+    xpath: null
+    type: Attribute
+    attribute: href

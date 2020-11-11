@@ -1,0 +1,3 @@
+from .SearchScrapper.SearchScrapperResource import SearchScrapperResource
+from .ReviewScrapper.ReviewScrapperResource import ReviewScrapperResource
+from .DetailProductScrapper.DetailProductScrapperResource import DetailProductScrapperResource
