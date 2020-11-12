@@ -1,0 +1,110 @@
+{
+	"variables": [],
+	"info": {
+		"name": "amazon_scrapping",
+		"_postman_id": "ab704705-4f78-f809-98e8-23c66e28abea",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Search products from amazon thorugh a search string",
+			"request": {
+				"url": {
+					"raw": "http://127.0.0.1:5001/search?s=boat%20510",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5001",
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "s",
+							"value": "boat%20510",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Query Params : \n\t's' : search string, must be url encoded\n\nResponse:\n\t'products' : array of json. Each json is a product from amamzon search page\n\n\tBy default, only one amazon nssearch page is scrapped."
+			},
+			"response": []
+		},
+		{
+			"name": "Detailed Product scrapped from amazon detailed product page",
+			"request": {
+				"url": {
+					"raw": "http://127.0.0.1:5001/detail?url=%2FRockerz-510-Wireless-Bluetooth-Headphones%2Fdp%2FB07BFT3FWG%2Fref%3Dsr_1_1_mod_primary_lightning_deal%3Fdchild%3D1%26keywords%3Dboat%2B510%26qid%3D1605166395%26sbo%3DTc8eqSFhUl4VwMzbE4fw%252Fw%253D%253D%26smid%3DA14CZOWI0VEHLG%26sr%3D8-1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5001",
+					"path": [
+						"detail"
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "%2FRockerz-510-Wireless-Bluetooth-Headphones%2Fdp%2FB07BFT3FWG%2Fref%3Dsr_1_1_mod_primary_lightning_deal%3Fdchild%3D1%26keywords%3Dboat%2B510%26qid%3D1605166395%26sbo%3DTc8eqSFhUl4VwMzbE4fw%252Fw%253D%253D%26smid%3DA14CZOWI0VEHLG%26sr%3D8-1",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Query Params : \n\t'url' : url of detailed page provided from search result api.(url value must be urlencoded)\n\nResponse:\n\t'review_url_page' : url for review page of given product url(to be used for sscrapping reviews of products)"
+			},
+			"response": []
+		},
+		{
+			"name": "Reviews of a product",
+			"request": {
+				"url": {
+					"raw": "http://127.0.0.1:5001/reviews?url=%2FRockerz-510-Wireless-Bluetooth-Headphones%2Fproduct-reviews%2FB07BFT3FWG%3FreviewerType%3Dall_reviews",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5001",
+					"path": [
+						"reviews"
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "%2FRockerz-510-Wireless-Bluetooth-Headphones%2Fproduct-reviews%2FB07BFT3FWG%3FreviewerType%3Dall_reviews",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Query Params : \n\t'url' : url of review page (provided in detailed page api)\n\nResponse :\n\t'reviews': Array of reviews of given product\n\t\n\tBy Default 100 reviews are scrapped\n"
+			},
+			"response": []
+		}
+	]
+}

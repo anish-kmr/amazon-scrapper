@@ -76,7 +76,7 @@ class DetailProductScrapper(Scrapper):
 
   
   def scrap(self,detail_page_url):
-    log.debug(f"Scrapping  : {self.base_url}/{detail_page_url}")
+    log.debug(f"Scrapping  : {self.base_url}/{detail_page_url}") 
     scrap_url = self.base_url+detail_page_url
     result={'review_page_url':''}
     res = requests.get(scrap_url, headers=self.headers)
