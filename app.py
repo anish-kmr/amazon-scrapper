@@ -1,6 +1,7 @@
 import sys
 from flask import Flask
 from flask_restful import Api
+from flask_cors import CORS
 
 from endpoints import SearchScrapperResource, ReviewScrapperResource, DetailProductScrapperResource
 import logging
@@ -11,6 +12,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"*": {"origins": "*"}})
 api = Api(app)
 
 

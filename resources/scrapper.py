@@ -76,17 +76,23 @@ class DetailProductScrapper(Scrapper):
 
   
   def scrap(self,detail_page_url):
-    log.debug(f"Scrapping  : {self.base_url}/{detail_page_url}") 
+    log.debug(f"Scrapping  : {self.base_url}{detail_page_url}") 
     scrap_url = self.base_url+detail_page_url
-    result={'review_page_url':''}
-    res = requests.get(scrap_url, headers=self.headers)
-    if res.status_code > 500:
-      log.debug("Error : Status code 500 returned from request")
-    scrapped_res = self.extractor.extract(res.text)
-    # print(json.dumps(scrapped_res,indent=2))
-    if(scrapped_res['review_page_url']):
-      result['review_page_url']= scrapped_res['review_page_url']
+    result={}
+    trials=0
+    while trials<10:
+      res = requests.get(scrap_url, headers=self.headers)
+      if res.status_code > 500:
+        log.debug("Error : Status code 500 returned from request")
+      # print('\n\n\n\n res of scrap ',res.text)
+      scrapped_res = self.extractor.extract(res.text)
 
+      print(json.dumps(scrapped_res,indent=2))
+      # log.debug(json.dumps(scrapped_res,indent=2))
+      result = scrapped_res
+      if(scrapped_res['review_page_url']):
+        break
+      trials+=1
     return result
   
     

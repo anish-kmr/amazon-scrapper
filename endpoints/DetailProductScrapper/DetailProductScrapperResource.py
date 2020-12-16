@@ -9,5 +9,6 @@ class DetailProductScrapperResource(Resource):
   def get(self):
     params = request.args
     detail_page_url = params.get('url')
+    # print('\n\n\n\ndp url is : '+detail_page_url)
     res = self.scrapper.scrap(detail_page_url)
     return res
